@@ -1,13 +1,13 @@
 import { test, expect } from "@playwright/test";
 import LoginPage from "../pages/LoginPage.js";
 const URL = process.env.URL;
-const email = process.env.email;
-const password = process.env.password;
-
+const email = process.env.EMAIL;
+const password = process.env.PASSWORD;
 test.describe("login test", () => {
-  const loginPage = new LoginPage();
   test("should login and show successful message", async ({ page }) => {
-    loginPage.goto(URL);
-    loginPage.login(email, password);
+    const loginPage = new LoginPage(page);
+    await loginPage.goto('/auth/login');
+    await loginPage.login(email, password);
+    await expect(page).toHaveURL('https://dap-test.binarycastle.xyz/dashboard');
   });
 });

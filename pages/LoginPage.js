@@ -3,7 +3,7 @@ class LoginPage {
     constructor(page) {
       this.page = page;
       this.emailInput = page.locator('input[type="email"]');
-      this.passwordInput = page.locator('input[type="text"]');
+      this.passwordInput = page.locator('input[placeholder="Password"]');
       this.loginButton = page.locator('button[type="submit"]');
     }
   
