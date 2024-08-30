@@ -1,4 +1,4 @@
-// tests/drugType.spec.js
+
 const { test } = require('@playwright/test');
 const LoginPage = require('../../pages/LoginPage');
 const DrugTypePage = require('../../pages/DrugManagement/DrugTypePage');
