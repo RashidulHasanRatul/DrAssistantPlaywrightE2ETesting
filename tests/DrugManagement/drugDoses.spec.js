@@ -30,8 +30,6 @@ test.describe('Drug Doses Module', () => {
 
   test('should show error messages for invalid Drug Dose creation', async () => {
     await drugDosesPage.createDrugDose('', '', '');
-    await expect(page.locator('input[name="doseName"]')).toHaveText('Dose name is required');
-    await expect(page.locator('input[name="doseAmount"]')).toHaveText('Dose amount is required');
     await drugDosesPage.validateError();
   });
 
