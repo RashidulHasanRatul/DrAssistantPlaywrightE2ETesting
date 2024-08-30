@@ -6,7 +6,7 @@ const password = process.env.PASSWORD;
 test.describe("login test", () => {
   test("should login and show successful message", async ({ page }) => {
     const loginPage = new LoginPage(page);
-    await loginPage.goto('/auth/login');
+    await loginPage.goto(URL);
     await loginPage.login(email, password);
     await expect(page).toHaveURL('https://dap-test.binarycastle.xyz/dashboard');
   });
