@@ -1,4 +1,3 @@
-// pages/drugStrengthPage.js
 class DrugStrengthPage {
     constructor(page) {
       this.page = page;

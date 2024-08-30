@@ -1,4 +1,3 @@
-// pages/drugsPage.js
 class DrugsPage {
     constructor(page) {
       this.page = page;
