@@ -6,11 +6,11 @@ const DrugDosesPage = require('../../pages/DrugManagement/DrugDosesPage');
 const URL = process.env.URL;
 const email = process.env.EMAIL;
 const password = process.env.PASSWORD;
-
+let page, loginPage, drugDosesPage;
 test.describe('Drug Doses Module', () => {
-  let page, loginPage, drugDosesPage;
+  
 
-  test.beforeEach(async ({ browser }) => {
+  test.beforeAll(async ({ browser }) => {
     page = await browser.newPage();
     loginPage = new LoginPage(page);
     drugDosesPage = new DrugDosesPage(page);
@@ -22,7 +22,9 @@ test.describe('Drug Doses Module', () => {
     // Navigate to Drug Doses Page
     await drugDosesPage.navigateTo();
   });
-
+  test.afterAll(async () => {
+    await page.close();
+  });
   test('should create a Drug Dose successfully', async () => {
     await drugDosesPage.createDrugDose('Test Dose', '1');
     await drugDosesPage.validateSuccess();
@@ -33,7 +35,5 @@ test.describe('Drug Doses Module', () => {
     await drugDosesPage.validateError();
   });
 
-  test.afterEach(async () => {
-    await page.close();
-  });
+
 });
