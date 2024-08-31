@@ -1,3 +1,4 @@
+const { expect } = require("@playwright/test");
 class DrugDosesPage {
   constructor(page) {
     this.page = page;
@@ -8,7 +9,7 @@ class DrugDosesPage {
       'input.form-check-input[type="radio"][name="status"]#status-0'
     );
     this.submitButton = page.locator('button[type="submit"]');
-    this.successMessage = page.locator('.toast-message:has-text("Dose created successfully")');
+    this.successMessage = page.getByText("Dose created successfully");
     this.errorMessage = page.locator(
       "text=The dose field is required. (and 1 more error)"
     );

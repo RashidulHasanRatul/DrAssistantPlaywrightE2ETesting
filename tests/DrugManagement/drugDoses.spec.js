@@ -33,7 +33,7 @@ test.describe('Drug Doses Module', () => {
     await drugDosesPage.validateError();
   });
 
-  // test.afterEach(async () => {
-  //   await page.close();
-  // });
+  test.afterEach(async () => {
+    await page.close();
+  });
 });
