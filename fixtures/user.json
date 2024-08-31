@@ -1,0 +1,19 @@
+{
+    "invalidUsers": [
+      {
+        "email": "rashidul.invalid@gmail.com",
+        "password": "",
+        "errorMessage": "The password field is required."
+      },
+      {
+        "email": "",
+        "password": "anyPassword",
+        "errorMessage": "The email field is required."
+      },
+      {
+        "email": "rashidul.invalid@gmail.com",
+        "password": "12",
+        "errorMessage": "The password must be at least 6 characters."
+      }
+    ]
+  }
