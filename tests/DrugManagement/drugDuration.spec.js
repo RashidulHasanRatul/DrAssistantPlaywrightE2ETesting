@@ -6,11 +6,10 @@ const DrugDurationPage = require('../../pages/DrugManagement/DrugDurationPage');
 const URL = process.env.URL;
 const email = process.env.EMAIL;
 const password = process.env.PASSWORD;
-
+let page, loginPage, drugDurationPage;
 test.describe('Drug Duration Module', () => {
-  let page, loginPage, drugDurationPage;
-
-  test.beforeEach(async ({ browser }) => {
+  
+  test.beforeAll(async ({ browser }) => {
     page = await browser.newPage();
     loginPage = new LoginPage(page);
     drugDurationPage = new DrugDurationPage(page);
@@ -22,18 +21,23 @@ test.describe('Drug Duration Module', () => {
     // Navigate to Drug Duration Page
     await drugDurationPage.navigateTo();
   });
+  test.afterAll(async () => {
+    await page.close();
+  });
 
   test('should create a Drug Duration successfully', async () => {
-    await drugDurationPage.createDrugDuration('Test Duration', '30 Days');
+    await drugDurationPage.createDrugDuration('30 Days');
     await drugDurationPage.validateSuccess();
   });
 
+  test('should show error messages for Blank Drug Duration creation', async () => {
+    await drugDurationPage.createDrugDuration(''); // Invalid data
+    await drugDurationPage.validateError('The duration field is required.');
+  });
   test('should show error messages for invalid Drug Duration creation', async () => {
-    await drugDurationPage.createDrugDuration('', ''); // Invalid data
-    await drugDurationPage.validateError();
+    await drugDurationPage.createDrugDuration('a');
+    await drugDurationPage.validateError('The duration must be at least 2 characters.');
   });
 
-  test.afterEach(async () => {
-    await page.close();
-  });
+
 });
