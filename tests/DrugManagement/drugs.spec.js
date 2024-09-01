@@ -2,7 +2,7 @@
 const { test } = require('@playwright/test');
 const LoginPage = require('../../pages/LoginPage');
 const DrugsPage = require('../../pages/DrugManagement/DrugsPage');
-
+const message = require('../../fixtures/message.json')
 const URL = process.env.URL;
 const email = process.env.EMAIL;
 const password = process.env.PASSWORD;
@@ -32,7 +32,7 @@ test.describe('Drugs Module', () => {
   });
   test('should show error messages for invalid Drug creation', async () => {
     await drugsPage.createDrug("", "", "", "", "", "");
-    await drugsPage.validateError("The trade name field is required. (and 1 more error)");
+    await drugsPage.validateError(message.error.tradeNameRequired);
   });
 
 });

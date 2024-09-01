@@ -1,0 +1,10 @@
+{
+    "success": {
+      "drugDurationCreated": "Drug Duration Created Successfully"
+    },
+    "error": {
+      "blankDuration": "The duration field is required.",
+      "invalidDuration": "The duration must be at least 2 characters.",
+      "tradeNameRequired": "The trade name field is required. (and 1 more error)"
+    }
+  }
