@@ -28,9 +28,6 @@ class DrugStrengthPage {
     async validateError() {
       await expect(this.errorMessage).toBeVisible();
     }
-
-  
-    // Add methods specific to Drug Strength actions here
   }
   
   module.exports = DrugStrengthPage;
