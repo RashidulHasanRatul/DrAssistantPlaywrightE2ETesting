@@ -23,7 +23,15 @@ test.describe('Drug Strength Module', () => {
     await drugStrengthPage.navigateTo();
   });
 
-  // Add test cases for Drug Strength module here
+  test("Create Drug Strength Successfully", async () => {
+    await drugStrengthPage.createDrugStrenght("Test Strength");
+    await drugStrengthPage.validateSuccess();
+  });
+
+  test("Shouldn't Create Drug Strength", async () => {
+    await drugStrengthPage.createDrugStrenght("");
+    await drugStrengthPage.validateError();
+  });
 
   test.afterEach(async () => {
     await page.close();

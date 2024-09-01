@@ -6,11 +6,11 @@ const DrugTypePage = require('../../pages/DrugManagement/DrugTypePage');
 const URL = process.env.URL;
 const email = process.env.EMAIL;
 const password = process.env.PASSWORD;
-
+let page, loginPage, drugTypePage;
 test.describe('Drug Type Module', () => {
-  let page, loginPage, drugTypePage;
 
-  test.beforeEach(async ({ browser }) => {
+
+  test.beforeAll(async ({ browser }) => {
     page = await browser.newPage();
     loginPage = new LoginPage(page);
     drugTypePage = new DrugTypePage(page);
@@ -25,7 +25,16 @@ test.describe('Drug Type Module', () => {
 
   // Add test cases for Drug Type module here
 
-  test.afterEach(async () => {
+  test.afterAll(async () => {
     await page.close();
+  });
+  test("Create Drug Type Successfully", async () => {
+    await drugTypePage.createDrugType("Test Drug Type");
+    await drugTypePage.validateSuccess();
+  });
+
+  test("Shouldn't Create Drug Type", async () => {
+    await drugTypePage.createDrugType("");
+    await drugTypePage.validateError();
   });
 });
