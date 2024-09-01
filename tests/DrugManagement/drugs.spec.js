@@ -27,7 +27,8 @@ test.describe('Drugs Module', () => {
   });
 
   test('should create a Drug successfully', async () => {
-    await drugsPage.createDrug("Test Drug", "Test Generic Name", "Test Note", "Test Warning", "Test Side Effect", "Test Additional Advice");
+    const uniquideTradeName = `${Date.now()}`
+    await drugsPage.createDrug(uniquideTradeName, "Test Generic Name", "Test Note", "Test Warning", "Test Side Effect", "Test Additional Advice");
     await drugsPage.validateSuccess();
   });
   test('should show error messages for invalid Drug creation', async () => {
